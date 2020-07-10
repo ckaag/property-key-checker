@@ -120,7 +120,7 @@ fun Map<Key, Value>.findInBoth(oldSpec: Map<Key, Value>, newSpec: Map<Key, Value
                 }
             )
         }
-        newSpec.filter { it.value == overValue && !oldSpec.containsKey(it.key) }.forEach {
+        newSpec.filter { it.value == overValue && !oldSpec.containsKey(it.key) && it.key != overKey }.forEach {
             result.add(KeyChange.NewKeyWithSameValue(overKey, it.key, it.value))
         }
     }
@@ -152,7 +152,7 @@ sealed class KeyChange(private val key: Key) {
         override fun toPrintableString(showChangedValues: Boolean): String? =
             ("The following key has vanished: key '${this.k.str}'")
     }
-
+    
     data class KeyDoesNotExistAnymoreButReplacement(
         val missingKey: Key,
         val newKeyWithSameValue: Key,
