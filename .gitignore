@@ -1,0 +1,8 @@
+.gradle
+.idea
+.settings
+out
+target
+build
+*.iml
+Language_de.properties
