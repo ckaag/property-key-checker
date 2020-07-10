@@ -22,3 +22,16 @@ To run the previously unzipped installation, call it like this:
 
 There is a help function: `./build/install/property-key-checker/bin/property-key-checker --help
 `
+
+
+## I am using this for Liferay 7.x language files
+You will probably want to preprocess the whole source code, combining all existing  keys into one giant property file. While this may cause some duplications, it's at least helpful to get started:
+
+
+`find ./src/ -name '*Language_de.properties' -exec cat {} \; > all_Language_de.properties`
+
+
+Do this for the Liferay version you're migrating from and the one you're migrating to. Use the resulting files as URLs for this tool itself.
+
+
+No warranty of course. YMMV.
